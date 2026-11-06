@@ -91,6 +91,10 @@ NSNotificationName const SPKProfileAnalyzerProgressDidChangeNotification = @"SPK
 - (void)runForSelfWithHeaderInfo:(SPKPAHeaderInfo)headerInfo
                         progress:(SPKPAProgress)progress
                       completion:(SPKPACompletion)completion {
+    // JACK BUILD: Profile Analyzer scrapes the full follower/following lists — removed (ban risk).
+    if (completion)
+        completion(nil, [self errorWithCode:SPKProfileAnalyzerErrorNetwork message:@"Profile Analyzer is disabled in this build."]);
+    return;
     if (self.isRunning) {
         if (completion)
             completion(nil, [self errorWithCode:SPKProfileAnalyzerErrorAlreadyRunning

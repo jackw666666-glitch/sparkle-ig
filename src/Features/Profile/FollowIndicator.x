@@ -39,6 +39,7 @@ static NSString *SPKFollowIndicatorMode(void) {
 }
 
 static BOOL SPKFollowIndicatorEnabled(void) {
+    return NO; // JACK BUILD: removed (extra friendship API call on every profile view)
     return ![SPKFollowIndicatorMode() isEqualToString:@"off"];
 }
 
