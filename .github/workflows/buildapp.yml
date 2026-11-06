@@ -15,7 +15,7 @@ on:
                 type: string
             upload_artifact:
                 description: "Upload Artifact"
-                default: true
+                default: false
                 required: false
                 type: boolean
             with_flex:
@@ -42,7 +42,7 @@ jobs:
         name: Build Sparkle
         # resources/sparkle.icon uses Icon Composer 27 features (refractivity),
         # which the Xcode 26 ictool on macos-latest refuses to open.
-        runs-on: xcode-27
+        runs-on: macos-26
         permissions:
             contents: write
 

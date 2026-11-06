@@ -632,8 +632,11 @@ then
     fi
 
     # Inject Sparkle alternate icons
-    inject_custom_icons "$ipa_stage_input" "$ipa_icons_tmp"
-    mv -f "$ipa_icons_tmp" "$ipa_stage_input"
+    if inject_custom_icons "$ipa_stage_input" "$ipa_icons_tmp"; then
+        mv -f "$ipa_icons_tmp" "$ipa_stage_input"
+    else
+        echo "Skipping Sparkle alternate app icons (Icon Composer unavailable)"
+    fi
 
     echo -e '\033[1m\033[32mCreating the IPA file...\033[0m'
     CYAN_FILES=()
